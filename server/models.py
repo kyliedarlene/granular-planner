@@ -37,7 +37,6 @@ class DayRoutine(db.Model, SerializerMixin):
     __tablename__ = 'day_routines'
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String)
     day_id = db.Column(db.Integer, db.ForeignKey('days.id'))
     routine_id = db.Column(db.Integer, db.ForeignKey('routines.id'))
     position = db.Column(db.Integer)
@@ -65,7 +64,6 @@ class RoutineTask(db.Model, SerializerMixin):
     __tablename__ = 'routine_tasks'
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String)
     routine_id = db.Column(db.Integer, db.ForeignKey('routines.id'))
     task_id = db.Column(db.Integer, db.ForeignKey('tasks.id'))
     position = db.Column(db.Integer)
