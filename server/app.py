@@ -113,7 +113,7 @@ def day_routines():
         response = make_response({"errors": ["validation errors"]}, 400)
     return response
 
-@app.route('/day_routine/<int:id>', methods = ['GET', 'PATCH', 'DELETE'])
+@app.route('/day_routines/<int:id>', methods = ['GET', 'PATCH', 'DELETE'])
 def day_routine_by_id(id):
     dr = DayRoutine.query.filter(DayRoutine.id == id).first()
     #days_other_routines = query and get all day_routines that belong to this day
