@@ -13,7 +13,9 @@ function RoutineMenu() {
     return (
         <div id="routine-menu">
             {routines.map((routine) => (
-                <button key={routine.id}>{routine.name}</button>
+                <button key={routine.id}>
+                    <Link to={`/update-routine/${routine.name}`}>{routine.name}</Link>
+                </button>
             ))}
             <button>
                 <Link to="/new-routine">+ New Routine</Link>
