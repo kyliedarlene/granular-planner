@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function RoutineMenu() {
     const [routines, setRoutines] = useState([])
@@ -14,7 +15,10 @@ function RoutineMenu() {
             {routines.map((routine) => (
                 <button key={routine.id}>{routine.name}</button>
             ))}
-            <button>+ New Routine</button>
+            <button>
+                <Link to="/new-routine">+ New Routine</Link>
+            </button>
+            
         </div>
     )
 }
