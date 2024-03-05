@@ -151,7 +151,7 @@ def day_routine_by_id(id):
             for pos in range (old_position + 1, after_last_position):
                 other_dr = DayRoutine.query.filter(DayRoutine.position == pos).first()
                 new_pos = pos - 1
-                setattr(other_dr, position, new_pos)
+                setattr(other_dr, 'position', new_pos)
                 
             db.session.delete(dr)
             db.session.commit()
@@ -287,7 +287,7 @@ def routine_task_by_id(id):
             for pos in range (old_position + 1, after_last_position):
                 other_rt = RoutineTask.query.filter(RoutineTask.position == pos).first()
                 new_pos = pos - 1
-                setattr(other_rt, position, new_pos)
+                setattr(other_rt, 'position', new_pos)
                 
             db.session.delete(rt)
             db.session.commit()

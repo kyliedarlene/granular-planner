@@ -20,7 +20,7 @@ function TaskList({ routine }) {
                 return 1
             }
         })
-        console.log(routineTasks)
+        //console.log(routineTasks)
         routineTasks.map((routineTask) => {
             tasks.push(routineTask.task)
         })
@@ -30,7 +30,7 @@ function TaskList({ routine }) {
         <div id="task-list">
             {
                 tasks.map((task) => (
-                    <Task key={task.id} task={task}/>
+                    <Task key={task.id} routine = {routine} task={task} routineTask = {routineTasks.filter((routineTask) => routineTask['task_id'] == task.id)}/>
                 ))
             }
             <AddTask routine={routine}/>
