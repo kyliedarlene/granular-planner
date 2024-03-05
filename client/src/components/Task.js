@@ -1,3 +1,5 @@
+import DeleteTaskButton from "./DeleteTaskButton";
+
 function Task({ task }) {
     function updateTask(id, newTaskName) {
         fetch(`/tasks/${id}`, {
@@ -12,9 +14,12 @@ function Task({ task }) {
     }
 
     return (
-        <h4 onClick={() => updateTask(task.id, "update task test")}>
-            {task.name}
-        </h4>
+        <div id="task">
+            <DeleteTaskButton id={task.id}/>
+            <h4 onClick={() => updateTask(task.id, "update task test")}>
+                {task.name}
+            </h4>
+        </div>
     )
 }
 
