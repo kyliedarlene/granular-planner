@@ -33,7 +33,7 @@ function TaskList({ routine }) {
                     <Task key={task.id} task={task}/>
                 ))
             }
-            <AddTask/>
+            <AddTask routine={routine}/>
         </div>
     )
 }
