@@ -193,7 +193,7 @@ def routine_by_id(id):
     if routine:
         if request.method == 'GET':
             routine_dict = routine.to_dict()
-            response = make_response(task_dict, 200)
+            response = make_response(routine_dict, 200)
         elif request.method == 'PATCH':
             try:
                 form_data = request.get_json()
