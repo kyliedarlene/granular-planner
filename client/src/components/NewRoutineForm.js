@@ -5,7 +5,6 @@ function NewRoutineForm({dayId}) {
     const [formData, setFormData] = useState([]);
 
     function postRoutine() {
-        //console.log(formData)
         fetch(`/routines`, {
             method: "POST",
             headers: {
@@ -26,18 +25,7 @@ function NewRoutineForm({dayId}) {
                     day_id: dayId
                 })
             })
-        }
-    //     const config = {
-    //       method: "POST",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //       body: JSON.stringify(formData),
-    //     };
-    //     const res = await fetch("//localhost:5555/routines", config);
-    //     const newRoutine = await res.json();
-    //     setFormData("")
-    //   
+        }  
     }
 
     function handleSubmit(e) {
