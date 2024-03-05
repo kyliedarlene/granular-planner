@@ -1,5 +1,9 @@
-function Task() {
-    return <h4>Task Rendered!</h4>
+function Task({ task }) {
+    function updateTaskName() {
+        
+    }
+    
+    return <h4>{task.name}</h4>
 }
 
 export default Task;

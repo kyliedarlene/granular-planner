@@ -1,11 +1,20 @@
+import { useState, useEffect } from "react";
 import TaskList from "./TaskList";
 
-function Routine() {
+function Routine({ id }) {
+    const [routine, setRoutine] = useState([])
+
+    useEffect(() => {
+        fetch(`/routines/${id}`)
+            .then(response => response.json())
+            .then(data => setRoutine(data))
+    }, []);
+    
     return (
-        <>
-            <h2>Routine Rendered!</h2>
-            <TaskList />
-        </>
+        <div>
+            <h1>{routine.name}</h1>
+            <TaskList routine={routine}/>
+        </div>
     )
 }
 
