@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 
-function NewRoutineForm(
-    //coming from RoutineMenu
-) {
+function NewRoutineForm({dayId}) {
 
     const [formData, setFormData] = useState([]);
 
     function postRoutine() {
-        console.log(formData)
+        //console.log(formData)
         fetch(`/routines`, {
             method: "POST",
             headers: {
@@ -17,6 +15,18 @@ function NewRoutineForm(
                 name: formData[0]
             })
         })
+
+        if (dayId != 'none') {
+            fetch(`/day_routines`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    day_id: dayId
+                })
+            })
+        }
     //     const config = {
     //       method: "POST",
     //       headers: {
@@ -32,7 +42,6 @@ function NewRoutineForm(
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log("name: "+formData)
         postRoutine();
     }
 

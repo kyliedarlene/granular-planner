@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import NewRoutineForm from "../components/NewRoutineForm";
 
 function RoutineMenu() {
     const [routines, setRoutines] = useState([])
@@ -17,9 +18,10 @@ function RoutineMenu() {
                     <Link to={`/update-routine/${routine.id}`}>{routine.name}</Link>
                 </button>
             ))}
-            <button>
+            <NewRoutineForm dayId= {'none'}/>
+            {/* <button>
                 <Link to="/new-routine">+ New Routine</Link>
-            </button>
+            </button> */}
             
         </div>
     )

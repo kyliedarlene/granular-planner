@@ -102,7 +102,7 @@ def day_routines():
         form_data = request.get_json()
         new_day_routine = DayRoutine(
             day_id = form_data['day_id'],
-            routine_id = form_data['routine_id'],
+            routine_id = len(Routine.query.all()),
             position = len(DayRoutine.query.filter(DayRoutine.day_id == form_data['day_id']).all()) #queries DayRoutine to find number of day_routines belonging to that day
         )
         db.session.add(new_day_routine)
@@ -237,7 +237,7 @@ def routine_tasks():
         form_data = request.get_json()
         new_routine_task = RoutineTask(
             routine_id = form_data['routine_id'],
-            task = form_data['task_id'],
+            task = len(Task.query.all()),
             position = len(RoutineTask.query.filter(RoutineTask.routine_id == form_data['routine_id']).all()) #queries RoutineTask to find number of routine_tasks belonging to that routine
         )
 
