@@ -4,7 +4,7 @@ function NewRoutine() {
     return (
         <>
             <h1>NewRoutine Rendered!</h1>
-            <NewRoutineForm />
+            <NewRoutineForm/>
         </>
     )
 }
