@@ -14,7 +14,7 @@ const routes = [
         element: <ManageRoutines />,
     },
     {
-        path: "/update-routine/:routine",
+        path: "/update-routine/:id",
         element: <UpdateRoutine />,
     },
     {
