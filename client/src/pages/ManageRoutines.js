@@ -3,7 +3,7 @@ import RoutineMenu from "../components/RoutineMenu";
 function ManageRoutines() {
     return (
         <>
-            <h1>ManageRoutines Rendered!</h1>
+            <h1>Select a routine to update:</h1>
             <RoutineMenu />
         </>
     )
