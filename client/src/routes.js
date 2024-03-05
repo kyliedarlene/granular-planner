@@ -22,8 +22,16 @@ const routes = [
         element: <NewRoutine />,
     },
     {
-        path: "/my-day",
-        element: <MyDay />,
+        path: "/days",
+        element: <Days />,
+    },
+    {
+        path: "/edit-day/:id",
+        element: <EditDay />,
+    },
+    {
+        path: "/day/:id",
+        element: <DisplayDay />,
     }
 ];
 
