@@ -1,10 +1,20 @@
-import useEffect from "react";
+import { useState, useEffect } from "react";
 
 function RoutineMenu() {
+    const [routines, setRoutines] = useState([])
+
+    useEffect(() => {
+        fetch("/routines")
+            .then(response => response.json())
+            .then(data => setRoutines(data))
+    }, []);
 
     return (
         <div id="routine-menu">
-            <h2>RoutineMenu Rendered!</h2>
+            {routines.map((routine) => (
+                <button key={routine.id}>{routine.name}</button>
+            ))}
+            <button>+ New Routine</button>
         </div>
     )
 }
