@@ -26,8 +26,6 @@ function TaskList({ routine }) {
         })
     } 
 
-    console.log(tasks)
-
     return (
         <div id="task-list">
             {
