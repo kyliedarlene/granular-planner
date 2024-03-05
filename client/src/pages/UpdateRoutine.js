@@ -7,10 +7,7 @@ function UpdateRoutine() {
     const routineId = parseInt(params.id);
     
     return (
-        <>
-            <h1>UpdateRoutines Rendered!</h1>
-            <Routine id={routineId}/>
-        </>
+        <Routine id={routineId}/>
     )
 }
 

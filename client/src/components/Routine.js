@@ -9,15 +9,12 @@ function Routine({ id }) {
             .then(response => response.json())
             .then(data => setRoutine(data))
     }, []);
-
-    const tasks = routine.routine_tasks
-    console.log(tasks)
     
     return (
-        <>
-            <h2>Routine Rendered!</h2>
-            <TaskList tasks={tasks}/>
-        </>
+        <div>
+            <h1>{routine.name}</h1>
+            <TaskList routine={routine}/>
+        </div>
     )
 }
 
