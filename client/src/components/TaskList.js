@@ -4,18 +4,18 @@ import Task from "./Task";
 import AddTask from "./AddTask";
 
 
-function TaskList({ routine, id }) {
+function TaskList({ routineId, routineTasks, handleDeleteRoutineTask }) {
     const [tasks, setTasks] = useState([])
 
     useEffect(() => {
-        fetch(`/routine/tasks/${id}`)
+        fetch(`/routine/tasks/${routineId}`)
             .then(response => response.json())
             .then(data => setTasks(data))
     }, []);
 
-    const orderedTasks = []
-    if (tasks.length > 0) {
-        tasks.sort((a , b) => {
+    const orderedRoutineTasks = []
+    if (routineTasks.length > 0) {
+        routineTasks.sort((a , b) => {
             const posA = a.position
             const posB = b.position
             if (posA < posB){
@@ -25,19 +25,24 @@ function TaskList({ routine, id }) {
                 return 1
             }
         })
-        tasks.map((task) => {
-            orderedTasks.push(task)
+        routineTasks.map((task) => {
+            orderedRoutineTasks.push(task)
         })
     } 
 
     return (
         <div id="task-list">
+            <h2>TaskList</h2>
             {
-                orderedTasks.map((task) => (
-                    <Task key={task.id} routine = {routine} task={task}/>
+                orderedRoutineTasks.map((routineTask) => (
+                    <Task 
+                        key={routineTask.id} 
+                        routineTask={routineTask} 
+                        handleDeleteRoutineTask={handleDeleteRoutineTask} 
+                    />
                 ))
             }
-            <AddTask routine={routine}/>
+            {/* <AddTask routine={routine}/> */}
         </div>
     )
 }

@@ -64,6 +64,10 @@ class Task(db.Model, SerializerMixin):
     # Add serialization rules to prevent recursion
     serialize_rules = ('-droutine_tasks.task', ) #make sure they're tuples
 
+    # Association proxy to get routines through routine_tasks
+    routines = association_proxy("routine_tasks", "routine",
+                              creator=lambda routine_obj: RoutineTask(routine=routine_obj))
+
 class RoutineTask(db.Model, SerializerMixin):
     __tablename__ = 'routine_tasks'
 
