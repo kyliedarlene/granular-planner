@@ -316,6 +316,17 @@ def routine_tasks_by_id(id):
 
     return response
 
+# @app.route('/routine/<int:id>/task/<int:id>', methods = 'DELETE')
+# def routine_tasks_by_both_ids(rid, tid):
+#     routine_task = RoutineTask.query.filter(Routine.id == rid and Task.id == tid).first()
+#     if (request.method == 'DELETE'):
+#         db.session.delete(routine_task)
+#         db.session.commit()
+
+#         response = make_response({}, 204)
+
+#     return response
+
 ###### TASKS #######
 
 @app.route('/tasks', methods = ['GET', 'POST'])

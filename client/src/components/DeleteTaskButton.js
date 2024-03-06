@@ -1,14 +1,16 @@
-function DeleteTaskButton({ task, routine }) {
+function DeleteTaskButton({ routineTask, handleDeleteRoutineTask }) {
 
-    function deleteRoutineTask(task, routine) {
-        //console.log(routineTask)
-        //console.log(routineTask[0].id)
-        fetch (`/routine/${routine.id}/task/${task.id}`, {
-            method: "DELETE",
-        })
-    }
+    // function deleteRoutineTask(routineTask) {
+    //     //console.log(routineTask)
+    //     //console.log(routineTask[0].id)
+    //     fetch (`/routine_tasks/${routineTask.id}`, {
+    //         method: "DELETE",
+    //     })
+    // }
     
-    return <button onClick={() => deleteRoutineTask(task, routine)}>[x]</button>
+    return (
+        <button onClick={() => handleDeleteRoutineTask(routineTask)}>[x]</button>
+    )
 }
 
 export default DeleteTaskButton;
