@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import TaskList from "./TaskList";
+import DeleteDayRoutineButton from "./DeleteDayRoutineButton";
 
-function Routine({ id }) {
+function Routine({ dayId, routineId, dayRoutine }) {
     const [routine, setRoutine] = useState([])
 
     useEffect(() => {
-        fetch(`/routines/${id}`)
+        fetch(`/routines/${routineId}`)
             .then(response => response.json())
             .then(data => setRoutine(data))
     }, []);
@@ -13,6 +14,7 @@ function Routine({ id }) {
     return (
         <div>
             <h2>{routine.name}</h2>
+            <DeleteDayRoutineButton dayRoutine = {dayRoutine}/>
             <TaskList routine={routine} id={id}/>
         </div>
     )
