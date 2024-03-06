@@ -34,10 +34,10 @@ function TaskList({ routine, id }) {
         <div id="task-list">
             {
                 orderedTasks.map((task) => (
-                    <Task key={task.id} routine = {routine} task={task}/>
+                    <Task key={task.id} routine={routine} task={task} />
                 ))
             }
-            <AddTask routine={routine}/>
+            {/* <AddTask routine={routine}/> */}
         </div>
     )
 }

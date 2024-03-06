@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import AddRoutine from "../components/AddRoutine.js";
-
 import Routine from "../components/Routine";
 
 function DisplayDay() {
