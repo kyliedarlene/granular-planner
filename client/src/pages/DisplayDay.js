@@ -19,6 +19,18 @@ function DisplayDay() {
         dayRoutines = day.day_routines;
     }
 
+    if (dayRoutines) {
+        dayRoutines.sort((a , b) => {
+            const posA = a.position
+            const posB = b.position
+            if (posA < posB){
+                return -1
+            }
+            if (posA > posB){
+                return 1
+            }
+        })}
+
     return (
         <div id={"display-day"}>
             <h1>{day.name}</h1>
