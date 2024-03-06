@@ -3,7 +3,6 @@ import React, { useState } from "react";
 function AddTask({routine}) {
 
     const [formData, setFormData] = useState([]);
-
     function postTask() {
         fetch(`/tasks`, {
             method: "POST",
@@ -28,6 +27,7 @@ function AddTask({routine}) {
 
     function handleSubmit(e) {
         e.preventDefault();
+        console.log(routine.id)
         postTask();
     }
 
@@ -35,7 +35,7 @@ function AddTask({routine}) {
         setFormData([
           e.target.value
         ]);
-      }
+    }
 
     return (
         <form onSubmit={handleSubmit}>
