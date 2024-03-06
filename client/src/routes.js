@@ -3,7 +3,6 @@ import ManageRoutines from "./pages/ManageRoutines";
 import UpdateRoutine from "./pages/UpdateRoutine";
 import NewRoutine from "./pages/NewRoutine";
 import Days from "./pages/Days";
-import EditDay from "./pages/EditDay";
 import DisplayDay from "./pages/DisplayDay";
 
 const routes = [
@@ -26,10 +25,6 @@ const routes = [
     {
         path: "/days",
         element: <Days />,
-    },
-    {
-        path: "/edit-day/:id",
-        element: <EditDay />,
     },
     {
         path: "/day/:id",
