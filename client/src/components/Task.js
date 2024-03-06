@@ -1,6 +1,6 @@
 import DeleteTaskButton from "./DeleteTaskButton";
 
-function Task({ routine, task, routineTask }) {
+function Task({ task }) {
     function updateTask(id, newTaskName) {
         fetch(`/tasks/${id}`, {
             method: "PATCH",
@@ -15,10 +15,11 @@ function Task({ routine, task, routineTask }) {
 
     return (
         <div id="task">
-            <h4 onClick={() => updateTask(task.id, "update task test")}>
+            {/* <h4 onClick={() => updateTask(task.id, "update task test")}>
                 {task.name}
             </h4>
-            <DeleteTaskButton routineTask={routineTask}/>
+            <DeleteTaskButton routineTask={routineTask}/> */}
+            <h4>{task.name}</h4>
         </div>
     )
 }

@@ -30,6 +30,10 @@ class Routine(db.Model, SerializerMixin):
     # Add serialization rules to prevent recursion
     serialize_rules = ('-day_routines.routine', '-routine_tasks.routine' ) #make sure they're tuples
 
+    # Association proxy to get tasks through routine_tasks
+    tasks = association_proxy("routine_tasks", "task",
+                              creator=lambda task_obj: RoutineTask(task=task_obj))
+
     # Add validation
 
 

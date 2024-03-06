@@ -1,16 +1,21 @@
+import { useState, useEffect } from "react";
+
 import Task from "./Task";
 import AddTask from "./AddTask";
 
 
-function TaskList({ routine }) {
-    let tasks = []
-    const routineTasks = routine.routine_tasks
-    //routineTasks is a list of RoutineTask Objects
-    //[{}, {}, {}]
-    //sort by position
-    
-    if (routineTasks) {
-        routineTasks.sort((a , b) => {
+function TaskList({ routine, id }) {
+    const [tasks, setTasks] = useState([])
+
+    useEffect(() => {
+        fetch(`/routine/tasks/${id}`)
+            .then(response => response.json())
+            .then(data => setTasks(data))
+    }, []);
+
+    const orderedTasks = []
+    if (tasks.length > 0) {
+        tasks.sort((a , b) => {
             const posA = a.position
             const posB = b.position
             if (posA < posB){
@@ -20,17 +25,16 @@ function TaskList({ routine }) {
                 return 1
             }
         })
-        //console.log(routineTasks)
-        routineTasks.map((routineTask) => {
-            tasks.push(routineTask.task)
+        tasks.map((task) => {
+            orderedTasks.push(task)
         })
     } 
 
     return (
         <div id="task-list">
             {
-                tasks.map((task) => (
-                    <Task key={task.id} routine = {routine} task={task} routineTask = {routineTasks.filter((routineTask) => routineTask['task_id'] == task.id)}/>
+                orderedTasks.map((task) => (
+                    <Task key={task.id} routine = {routine} task={task}/>
                 ))
             }
             <AddTask routine={routine}/>
