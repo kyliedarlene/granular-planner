@@ -15,16 +15,16 @@ function Routine({ dayId, routineId, dayRoutine }) {
     }, []);
 
     function handleDeleteRoutineTask(routineTask) {
+        // delete RoutineTask object in database
         fetch (`/routine_tasks/${routineTask.id}`, {
             method: "DELETE",
         })
-        // const index = routineTasks.indexOf(routineTask)
-        console.log(routineTasks)
-        // const newRoutineTasks = [...routineTasks]
-        // console.log(newRoutineTasks)
-        // newRoutineTasks.splice(0)
-        // console.log(newRoutineTasks)
-        // setRoutineTasks(newRoutineTasks)
+        
+        // update routineTasks to reload DOM
+        const index = routineTasks.indexOf(routineTask)
+        const newRoutineTasks = [...routineTasks]
+        newRoutineTasks.splice(index, 1)
+        setRoutineTasks(newRoutineTasks)
     }
     
     return (
