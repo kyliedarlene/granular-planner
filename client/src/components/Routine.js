@@ -15,7 +15,7 @@ function Routine({ dayId, routineId, dayRoutine }) {
         <div>
             <h2>{routine.name}</h2>
             <DeleteDayRoutineButton dayRoutine = {dayRoutine}/>
-            <TaskList routine={routine} id={id}/>
+            <TaskList routine={routine} id={routineId}/>
         </div>
     )
 }
