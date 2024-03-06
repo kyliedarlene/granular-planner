@@ -36,9 +36,14 @@ function DisplayDay() {
         <div id={"display-day"}>
             <h1>{day.name}</h1>
             {dayRoutines.map((day_routine) => (
-                <Routine key={day_routine.id} dayId = {day_routine.day_id} routineId={day_routine.routine_id} dayRoutine = {dayRoutines.filter((dayRoutine) => dayRoutine['id'] == day_routine.id)}/>
+                <Routine 
+                    key={day_routine.id} 
+                    dayId={day_routine.day_id} 
+                    routineId={day_routine.routine_id} 
+                    dayRoutine={dayRoutines.filter((dayRoutine) => dayRoutine['id'] == day_routine.id)}
+                />
             ))}
-            <AddRoutine dayId = {dayId}/>
+            <AddRoutine dayId={dayId} />
         </div>
     )
 }
