@@ -229,6 +229,22 @@ def routine_by_id(id):
         )
     return response
 
+@app.route('/routine/tasks/<int:id>')
+def routine_tasks_by_id(id):
+    routine = Routine.query.filter(Routine.id == id).first()
+    tasks = []
+    for routine_task in routine.routine_tasks:
+        task = routine_task.task
+        task_dict = task.to_dict(rules=("-routine_tasks",))
+        tasks.append(task_dict)
+    
+    response = make_response(
+        tasks,
+        200
+    )
+
+    return response
+
 ######## ROUTINE_TASKS #########
 
 @app.route('/routine_tasks', methods = ['POST'])

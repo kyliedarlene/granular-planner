@@ -1,8 +1,8 @@
-"""empty message
+"""redo initial migration, add association proxy to Routine
 
-Revision ID: c62a0885dcf3
+Revision ID: 44ee1d1a0a1f
 Revises: 
-Create Date: 2024-03-04 14:20:59.164430
+Create Date: 2024-03-06 01:38:19.792208
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'c62a0885dcf3'
+revision = '44ee1d1a0a1f'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -35,7 +35,6 @@ def upgrade():
     )
     op.create_table('day_routines',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('name', sa.String(), nullable=True),
     sa.Column('day_id', sa.Integer(), nullable=True),
     sa.Column('routine_id', sa.Integer(), nullable=True),
     sa.Column('position', sa.Integer(), nullable=True),
@@ -45,7 +44,6 @@ def upgrade():
     )
     op.create_table('routine_tasks',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('name', sa.String(), nullable=True),
     sa.Column('routine_id', sa.Integer(), nullable=True),
     sa.Column('task_id', sa.Integer(), nullable=True),
     sa.Column('position', sa.Integer(), nullable=True),
