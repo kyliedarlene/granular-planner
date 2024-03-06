@@ -12,7 +12,7 @@ function Routine({ id }) {
     
     return (
         <div>
-            <h1>{routine.name}</h1>
+            <h2>{routine.name}</h2>
             <TaskList routine={routine}/>
         </div>
     )
