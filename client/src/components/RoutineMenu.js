@@ -19,9 +19,6 @@ function RoutineMenu() {
                 </button>
             ))}
             <NewRoutineForm dayId= {'none'}/>
-            {/* <button>
-                <Link to="/new-routine">+ New Routine</Link>
-            </button> */}
         </div>
     )
 }
