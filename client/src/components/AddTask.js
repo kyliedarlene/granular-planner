@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function AddTask({ routineId }) {
+function AddTask({ routineId, handleAddRoutineTask }) {
     const [formData, setFormData] = useState([]);
 
     function postTask() {
@@ -14,18 +14,7 @@ function AddTask({ routineId }) {
             })
         })
             .then((response => response.json()))
-            .then((newTask) => {
-                fetch(`/routine_tasks`, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                        routine_id: routineId,
-                        task_id: newTask.id
-                    })
-                })
-            })
+            .then((newTask) => handleAddRoutineTask(routineId, newTask.id))
     } 
 
     function handleSubmit(e) {
@@ -53,6 +42,5 @@ function AddTask({ routineId }) {
     //form takes in a name and make a new routine
     //return takes us to /update-routine/:id
 }
-
 
 export default AddTask;
