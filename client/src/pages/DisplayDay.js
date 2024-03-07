@@ -15,7 +15,12 @@ function DisplayDay() {
             .then(data => {setDay(data)})
     }, []);
 
-    
+    function handleDeleteDayRoutine(dayRoutine) {
+        const id = dayRoutine.id
+        fetch (`/day_routines/${id}`, {
+            method: "DELETE",
+        })
+    }
 
     let dayRoutines = []
     if (Object.keys(day).length > 0) {
@@ -45,7 +50,11 @@ function DisplayDay() {
                     routineId={day_routine.routine_id} 
                     dayRoutine={dayRoutines.filter((dayRoutine) => dayRoutine['id'] == day_routine.id)}
                 />
-                <DeleteDayRoutineButton key={day_routine.id} dayRoutine={day_routine} />
+                <DeleteDayRoutineButton 
+                    key={day_routine.id} 
+                    dayRoutine={day_routine}
+                    handleDeleteDayRoutine={handleDeleteDayRoutine} 
+                />
                 </>
             ))}
             {/* <AddRoutine dayId={dayId} /> */}

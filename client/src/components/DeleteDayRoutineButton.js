@@ -1,17 +1,7 @@
-function DeleteDayRoutineButton({ dayRoutine }) {
-
-    function deleteDayRoutine(dayRoutine) {
-        //console.log(dayRoutine)
-        const id = dayRoutine.id
-        //console.log(id)
-        fetch (`/day_routines/${id}`, {
-            method: "DELETE",
-        })
-    }
-    console.log(dayRoutine)
+function DeleteDayRoutineButton({ dayRoutine, handleDeleteDayRoutine }) {
     
     return (
-        <button onClick={() => deleteDayRoutine(dayRoutine)}>
+        <button onClick={() => handleDeleteDayRoutine(dayRoutine)}>
             {`Remove ${dayRoutine.routine.name}`}
         </button>
     )
