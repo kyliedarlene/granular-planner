@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import AddRoutine from "../components/AddRoutine.js";
 import Routine from "../components/Routine";
+import DeleteDayRoutineButton from "../components/DeleteDayRoutineButton.js";
 
 function DisplayDay() {
     const [day, setDay] = useState({})
@@ -13,6 +14,8 @@ function DisplayDay() {
             .then(response => response.json())
             .then(data => {setDay(data)})
     }, []);
+
+    
 
     let dayRoutines = []
     if (Object.keys(day).length > 0) {
@@ -35,12 +38,15 @@ function DisplayDay() {
         <div id={"display-day"}>
             <h1>{day.name}</h1>
             {dayRoutines.map((day_routine) => (
+                <>
                 <Routine 
                     key={day_routine.routine_id} 
                     dayId={day_routine.day_id} 
                     routineId={day_routine.routine_id} 
                     dayRoutine={dayRoutines.filter((dayRoutine) => dayRoutine['id'] == day_routine.id)}
                 />
+                <DeleteDayRoutineButton key={day_routine.id} dayRoutine={day_routine} />
+                </>
             ))}
             {/* <AddRoutine dayId={dayId} /> */}
         </div>

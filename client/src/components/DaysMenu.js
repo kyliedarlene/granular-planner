@@ -18,7 +18,6 @@ function DaysMenu() {
                     <Link to={`/day/${day.id}`}>{day.name}</Link>
                 </button>
             ))}
-            <h3>Add New Day Button</h3>
         </div>
     )
 }
