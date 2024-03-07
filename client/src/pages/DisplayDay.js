@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import AddRoutine from "../components/AddRoutine.js";
 import Routine from "../components/Routine";
 import DeleteDayRoutineButton from "../components/DeleteDayRoutineButton.js";
+import NavBar from "../components/NavBar.js";
+import DeleteDayButton from "../components/DeleteDayButton.js"
 
 function DisplayDay() {
     const [day, setDay] = useState({})
@@ -49,7 +51,9 @@ function DisplayDay() {
 
     return (
         <div id={"display-day"}>
+            <NavBar/>
             <h1>{day.name}</h1>
+            <DeleteDayButton day={day} />
             {dayRoutines.map((dayRoutine) => (
                 <div id={"routine-container"} key={dayRoutine.id * 1000}>
                     <Routine 
