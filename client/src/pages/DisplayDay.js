@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import AddRoutine from "../components/AddRoutine.js";
 import Routine from "../components/Routine";
+import NavBar from "../components/NavBar.js";
 
 function DisplayDay() {
     const [day, setDay] = useState({})
@@ -33,6 +34,7 @@ function DisplayDay() {
 
     return (
         <div id={"display-day"}>
+            <NavBar/>
             <h1>{day.name}</h1>
             {dayRoutines.map((day_routine) => (
                 <Routine 
@@ -42,7 +44,7 @@ function DisplayDay() {
                     dayRoutine={dayRoutines.filter((dayRoutine) => dayRoutine['id'] == day_routine.id)}
                 />
             ))}
-            {/* <AddRoutine dayId={dayId} /> */}
+            <AddRoutine dayId={dayId} />
         </div>
     )
 }
