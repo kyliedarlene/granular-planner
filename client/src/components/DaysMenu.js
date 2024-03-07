@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import AddDay from "./AddDay"
 
 function DaysMenu() {
     const [days, setDays] = useState([])
@@ -9,6 +10,12 @@ function DaysMenu() {
             .then(response => response.json())
             .then(data => setDays(data))
     }, []);
+
+    const handleAddDay = () => {
+        fetch("/days")
+            .then(response => response.json())
+            .then(data => setDays(data));
+    };
     
     return (
         <div id={"days-menu"}>
@@ -18,7 +25,7 @@ function DaysMenu() {
                     <Link to={`/day/${day.id}`}>{day.name}</Link>
                 </button>
             ))}
-            <h3>Add New Day Button</h3>
+            <AddDay onAddDay = {handleAddDay}/>
         </div>
     )
 }
