@@ -29,7 +29,7 @@ function AddRoutine({dayId}) {
     function handleSubmit(e) {
         e.preventDefault();
         postDayRoutine();
-        //setSelectedRoutine("");
+        setSelectedRoutine("");
     }
 
     function handleChange(e) {

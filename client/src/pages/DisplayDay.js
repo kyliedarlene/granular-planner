@@ -42,7 +42,7 @@ function DisplayDay() {
                     dayRoutine={dayRoutines.filter((dayRoutine) => dayRoutine['id'] == day_routine.id)}
                 />
             ))}
-            {/* <AddRoutine dayId={dayId} /> */}
+            <AddRoutine dayId={dayId} />
         </div>
     )
 }
