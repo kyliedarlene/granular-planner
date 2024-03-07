@@ -237,7 +237,7 @@ def routine_tasks():
         form_data = request.get_json()
         new_routine_task = RoutineTask(
             routine_id = form_data['routine_id'],
-            task_id = len(Task.query.all()),
+            task_id = form_data['task_id'],
             position = len(RoutineTask.query.filter(RoutineTask.routine_id == form_data['routine_id']).all()) #queries RoutineTask to find number of routine_tasks belonging to that routine
         )
 

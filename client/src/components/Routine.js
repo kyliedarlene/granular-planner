@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import TaskList from "./TaskList";
 
-function Routine({ dayId, routineId, dayRoutine }) {
+function Routine({ routineId }) {
     const [routine, setRoutine] = useState([])
     const [routineTasks, setRoutineTasks] = useState([])
 

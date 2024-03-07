@@ -42,7 +42,7 @@ function TaskList({ routineId, routineTasks, handleDeleteRoutineTask }) {
                     />
                 ))
             }
-            {/* <AddTask routine={routine}/> */}
+            <AddTask routineId={routineId} />
         </div>
     )
 }

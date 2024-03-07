@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
-function AddTask({routine}) {
-
+function AddTask({ routineId }) {
     const [formData, setFormData] = useState([]);
+
     function postTask() {
         fetch(`/tasks`, {
             method: "POST",
@@ -13,21 +13,24 @@ function AddTask({routine}) {
                 name: formData[0]
             })
         })
-
-        fetch(`/routine_tasks`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                routine_id: routine.id
+            .then((response => response.json()))
+            .then((newTask) => {
+                fetch(`/routine_tasks`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        routine_id: routineId,
+                        task_id: newTask.id
+                    })
+                })
             })
-        })
     } 
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log(routine.id)
+        console.log(routineId)
         postTask();
     }
 
