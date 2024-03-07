@@ -1,7 +1,8 @@
 import { useParams } from "react-router-dom";
 import NavBar from "../components/NavBar";
-
+import DeleteRoutineButton from "../components/DeleteRoutineButton";
 import Routine from "../components/Routine";
+
 
 function UpdateRoutine() {
     const params = useParams();
@@ -10,6 +11,7 @@ function UpdateRoutine() {
     return (
         <div>
             <NavBar/>
+            <DeleteRoutineButton routineId = {routineId}/>
             <Routine routineId={routineId}/>
         </div>
     )

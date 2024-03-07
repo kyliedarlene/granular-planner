@@ -6,7 +6,7 @@ function DeleteDayButton({day}) {
     const navigate = useNavigate();
 
     function handleDeleteDay(day){
-        console.log(day)
+        //console.log(day)
         const id = day.id
         //console.log(id)
         fetch (`/days/${id}`, {
