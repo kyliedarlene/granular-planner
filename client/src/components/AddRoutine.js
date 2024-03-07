@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function AddRoutine({dayId}) {
+function AddRoutine({ dayId, handleAddDayRoutine }) {
 
     const [routines, setRoutines] = useState([])
     const [selectedRoutine, setSelectedRoutine] = useState("")
@@ -10,25 +10,10 @@ function AddRoutine({dayId}) {
             .then(response => response.json())
             .then(data => setRoutines(data))
     }, []);
-
-    function postDayRoutine() {
-        fetch(`/day_routines`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                day_id: dayId,
-                routine_id: selectedRoutine[0]
-            })
-        })
-    } 
     
-    
-
     function handleSubmit(e) {
         e.preventDefault();
-        postDayRoutine();
+        handleAddDayRoutine(dayId, selectedRoutine[0]);
         setSelectedRoutine("");
     }
 
@@ -36,8 +21,6 @@ function AddRoutine({dayId}) {
         setSelectedRoutine([
           e.target.value
         ]);
-        console.log(dayId)
-        console.log(selectedRoutine)
     }
 
     //dropdown menu choosing Routine to add

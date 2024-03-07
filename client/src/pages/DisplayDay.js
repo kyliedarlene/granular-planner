@@ -37,6 +37,25 @@ function DisplayDay() {
             })
     }, []);
 
+    function handleAddDayRoutine(dayId, routineId) {
+        fetch(`/day_routines`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                day_id: dayId,
+                routine_id: routineId
+            })
+        })
+            .then(response => response.json())
+            .then((newDayRoutine) => {
+                const newDayRoutines = [...dayRoutines]
+                newDayRoutines.push(newDayRoutine)
+                setDayRoutines(newDayRoutines)
+            })
+    }
+
     function handleDeleteDayRoutine(dayRoutine) {
         const id = dayRoutine.id
         fetch (`/day_routines/${id}`, {
@@ -67,7 +86,10 @@ function DisplayDay() {
                     />
                 </div>
             ))}
-            <AddRoutine dayId={dayId} />
+            <AddRoutine 
+                dayId={dayId} 
+                handleAddDayRoutine={handleAddDayRoutine}
+            />
         </div>
     )
 }
