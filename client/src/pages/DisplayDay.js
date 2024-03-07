@@ -2,49 +2,70 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import AddRoutine from "../components/AddRoutine.js";
 import Routine from "../components/Routine";
+import DeleteDayRoutineButton from "../components/DeleteDayRoutineButton.js";
 import NavBar from "../components/NavBar.js";
 import DeleteDayButton from "../components/DeleteDayButton.js"
 
 function DisplayDay() {
     const [day, setDay] = useState({})
+    const [dayRoutines, setDayRoutines] = useState([])
     const params = useParams();
     const dayId = parseInt(params.id)
 
     useEffect(() => {
         fetch(`/days/${dayId}`)
             .then(response => response.json())
-            .then(data => {setDay(data)})
+            .then(day => {
+                
+                // sort day_routines
+                const arr = day.day_routines
+                if (arr.length > 0) {
+                    arr.sort((a , b) => {
+                        const posA = a.position
+                        const posB = b.position
+                        if (posA < posB){
+                            return -1
+                        }
+                        if (posA > posB){
+                            return 1
+                        }
+                    })}
+
+                // set state
+                setDay(day)
+                setDayRoutines(arr)
+            })
     }, []);
 
-    let dayRoutines = []
-    if (Object.keys(day).length > 0) {
-        dayRoutines = day.day_routines;
-    }
+    function handleDeleteDayRoutine(dayRoutine) {
+        const id = dayRoutine.id
+        fetch (`/day_routines/${id}`, {
+            method: "DELETE",
+        })
 
-    if (dayRoutines) {
-        dayRoutines.sort((a , b) => {
-            const posA = a.position
-            const posB = b.position
-            if (posA < posB){
-                return -1
-            }
-            if (posA > posB){
-                return 1
-            }
-        })}
+        const index = dayRoutines.indexOf(dayRoutine)
+        const newDayRoutines = [...dayRoutines]
+        newDayRoutines.splice(index, 1)
+        setDayRoutines(newDayRoutines)
+    }
 
     return (
         <div id={"display-day"}>
             <NavBar/>
             <h1>{day.name}</h1>
-            <DeleteDayButton day = {day}/>
-            {dayRoutines.map((day_routine) => (
-                <Routine 
-                    key={day_routine.routine_id} 
-                    dayId={day_routine.day_id} 
-                    routineId={day_routine.routine_id} 
-                    dayRoutine={dayRoutines.filter((dayRoutine) => dayRoutine['id'] == day_routine.id)}
-                />
+            <DeleteDayButton day={day} />
+            {dayRoutines.map((dayRoutine) => (
+                <div id={"routine-container"} key={dayRoutine.id * 1000}>
+                    <Routine 
+                        key={dayRoutine.id} 
+                        routineId={dayRoutine.routine_id} 
+                    />
+                    <DeleteDayRoutineButton 
+                        key={(dayRoutine.id) * 100} 
+                        dayRoutine={dayRoutine}
+                        handleDeleteDayRoutine={handleDeleteDayRoutine} 
+                    />
+                </div>
             ))}
             <AddRoutine dayId={dayId} />
         </div>
