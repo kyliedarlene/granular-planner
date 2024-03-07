@@ -13,9 +13,25 @@ function DisplayDay() {
     useEffect(() => {
         fetch(`/days/${dayId}`)
             .then(response => response.json())
-            .then(data => {
-                setDay(data)
-                setDayRoutines(data.day_routines)
+            .then(day => {
+                
+                // sort day_routines
+                const arr = day.day_routines
+                if (arr.length > 0) {
+                    arr.sort((a , b) => {
+                        const posA = a.position
+                        const posB = b.position
+                        if (posA < posB){
+                            return -1
+                        }
+                        if (posA > posB){
+                            return 1
+                        }
+                    })}
+
+                // set state
+                setDay(day)
+                setDayRoutines(arr)
             })
     }, []);
 
@@ -28,50 +44,26 @@ function DisplayDay() {
         const index = dayRoutines.indexOf(dayRoutine)
         const newDayRoutines = [...dayRoutines]
         newDayRoutines.splice(index, 1)
-        setDayRoutines([newDayRoutines])
+        setDayRoutines(newDayRoutines)
     }
-
-    let orderedDayRoutines = []
-    // if (dayRoutines.length > 0) {
-    //     dayRoutines = day.day_routines;
-    // }
-
-    if (dayRoutines.length > 0) {
-        dayRoutines.sort((a , b) => {
-            const posA = a.position
-            const posB = b.position
-            if (posA < posB){
-                return -1
-            }
-            if (posA > posB){
-                return 1
-            }
-        })}
-        dayRoutines.map((dayRoutine) => {
-            orderedDayRoutines.push(dayRoutine)
-        })
-
-    console.log(day)
 
     return (
         <div id={"display-day"}>
-            <h1>{"DAY"}</h1>
-            {orderedDayRoutines.map((day_routine) => (
-                <div id={"routine-container"} key={day_routine.id * 1000}>
+            <h1>{day.name}</h1>
+            {dayRoutines.map((dayRoutine) => (
+                <div id={"routine-container"} key={dayRoutine.id * 1000}>
                     <Routine 
-                        key={day_routine.id} 
-                        dayId={day_routine.day_id} 
-                        routineId={day_routine.routine_id} 
-                        dayRoutine={orderedDayRoutines.filter((dayRoutine) => dayRoutine['id'] == day_routine.id)}
+                        key={dayRoutine.id} 
+                        routineId={dayRoutine.routine_id} 
                     />
                     <DeleteDayRoutineButton 
-                        key={(day_routine.id) * 100} 
-                        dayRoutine={day_routine}
+                        key={(dayRoutine.id) * 100} 
+                        dayRoutine={dayRoutine}
                         handleDeleteDayRoutine={handleDeleteDayRoutine} 
                     />
                 </div>
             ))}
-            {/* <AddRoutine dayId={dayId} /> */}
+            <AddRoutine dayId={dayId} />
         </div>
     )
 }
