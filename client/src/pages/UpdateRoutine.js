@@ -7,7 +7,7 @@ function UpdateRoutine() {
     const routineId = parseInt(params.id);
     
     return (
-        <Routine id={routineId}/>
+        <Routine routineId={routineId}/>
     )
 }
 
