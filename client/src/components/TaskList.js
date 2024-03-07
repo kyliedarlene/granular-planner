@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
-
 import Task from "./Task";
 import AddTask from "./AddTask";
-
 
 function TaskList({ 
     routineId, 
@@ -10,14 +8,6 @@ function TaskList({
     handleAddRoutineTask, 
     handleDeleteRoutineTask 
 }) {
-    const [tasks, setTasks] = useState([])
-
-    useEffect(() => {
-        fetch(`/routine/tasks/${routineId}`)
-            .then(response => response.json())
-            .then(data => setTasks(data))
-    }, []);
-
     const orderedRoutineTasks = []
     if (routineTasks.length > 0) {
         routineTasks.sort((a , b) => {

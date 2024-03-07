@@ -14,22 +14,7 @@ function AddTask({ routineId, handleAddRoutineTask }) {
             })
         })
             .then((response => response.json()))
-            .then((newTask) => {
-                handleAddRoutineTask(newTask)
-                // fetch(`/routine_tasks`, {
-                //     method: "POST",
-                //     headers: {
-                //         "Content-Type": "application/json",
-                //     },
-                //     body: JSON.stringify({
-                //         routine_id: routineId,
-                //         task_id: newTask.id
-                //     })
-                // })
-                // const newTaskList = [...tasks]
-                // newTaskList.push(newTask)
-                // setTasks(newTaskList)
-            })
+            .then((newTask) => handleAddRoutineTask(routineId, newTask.id))
     } 
 
     function handleSubmit(e) {
@@ -57,6 +42,5 @@ function AddTask({ routineId, handleAddRoutineTask }) {
     //form takes in a name and make a new routine
     //return takes us to /update-routine/:id
 }
-
 
 export default AddTask;

@@ -14,7 +14,7 @@ function Routine({ routineId }) {
             })
     }, []);
 
-    function handleAddRoutineTask(task) {
+    function handleAddRoutineTask(routineId, taskId) {
         fetch(`/routine_tasks`, {
             method: "POST",
             headers: {
@@ -22,7 +22,7 @@ function Routine({ routineId }) {
             },
             body: JSON.stringify({
                 routine_id: routineId,
-                task_id: task.id
+                task_id: taskId
             })
         })
             .then((response => response.json()))
