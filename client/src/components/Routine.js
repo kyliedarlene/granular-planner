@@ -14,6 +14,25 @@ function Routine({ routineId }) {
             })
     }, []);
 
+    function handleAddRoutineTask(task) {
+        fetch(`/routine_tasks`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                routine_id: routineId,
+                task_id: task.id
+            })
+        })
+            .then((response => response.json()))
+            .then((newRoutineTask) => {
+                const newRoutineTasks = [...routineTasks]
+                newRoutineTasks.push(newRoutineTask)
+                setRoutineTasks(newRoutineTasks)
+            })
+    }
+    
     function handleDeleteRoutineTask(routineTask) {
         // delete RoutineTask object in database
         fetch (`/routine_tasks/${routineTask.id}`, {
@@ -34,6 +53,7 @@ function Routine({ routineId }) {
             <TaskList 
                 routineId={routineId} 
                 routineTasks={routineTasks} 
+                handleAddRoutineTask={handleAddRoutineTask}
                 handleDeleteRoutineTask={handleDeleteRoutineTask} 
             />
         </div>

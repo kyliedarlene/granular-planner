@@ -4,7 +4,12 @@ import Task from "./Task";
 import AddTask from "./AddTask";
 
 
-function TaskList({ routineId, routineTasks, handleDeleteRoutineTask }) {
+function TaskList({ 
+    routineId, 
+    routineTasks, 
+    handleAddRoutineTask, 
+    handleDeleteRoutineTask 
+}) {
     const [tasks, setTasks] = useState([])
 
     useEffect(() => {
@@ -32,17 +37,16 @@ function TaskList({ routineId, routineTasks, handleDeleteRoutineTask }) {
 
     return (
         <div id="task-list">
-            <h2>TaskList</h2>
             {
                 orderedRoutineTasks.map((routineTask) => (
                     <Task 
                         key={routineTask.id} 
                         routineTask={routineTask} 
-                        handleDeleteRoutineTask={handleDeleteRoutineTask} 
+                        handleDeleteRoutineTask={handleDeleteRoutineTask } 
                     />
                 ))
             }
-            <AddTask routineId={routineId} />
+            <AddTask routineId={routineId} handleAddRoutineTask={handleAddRoutineTask} />
         </div>
     )
 }
