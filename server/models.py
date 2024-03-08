@@ -17,6 +17,12 @@ class Day(db.Model, SerializerMixin):
     # Add serialization rules to prevent recursion
     serialize_rules = ('-day_routines.day', ) #make sure they're tuples
 
+    @validates('name')
+    def validate_description(self, key, value):
+        if not value or len(value) > 20:
+            raise ValueError('name must be present and less than 20 characters long')
+        return value
+
 
 class Routine(db.Model, SerializerMixin):
     __tablename__ = 'routines'
@@ -35,7 +41,11 @@ class Routine(db.Model, SerializerMixin):
                               creator=lambda task_obj: RoutineTask(task=task_obj))
 
     # Add validation
-
+    @validates('name')
+    def validate_description(self, key, value):
+        if not value or len(value) > 20:
+            raise ValueError('name must be present and less than 20 characters long')
+        return value
 
 class DayRoutine(db.Model, SerializerMixin):
     __tablename__ = 'day_routines'
@@ -67,6 +77,12 @@ class Task(db.Model, SerializerMixin):
     # Association proxy to get routines through routine_tasks
     routines = association_proxy("routine_tasks", "routine",
                               creator=lambda routine_obj: RoutineTask(routine=routine_obj))
+
+    @validates('name')
+    def validate_description(self, key, value):
+        if not value or len(value) > 20:
+            raise ValueError('name must be present and less than 20 characters long')
+        return value
 
 class RoutineTask(db.Model, SerializerMixin):
     __tablename__ = 'routine_tasks'
