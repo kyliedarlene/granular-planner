@@ -61,9 +61,12 @@ function Routine({ routineId, display }) {
     }
     
     return (
-            <Segment padded textAlign="center">
-                <Header as={display === "view" ? 'h2' : 'h1'}>{routine.name}</Header>
-                
+            <Segment 
+                padded 
+                textAlign="center"
+                basic={display === "view" ? true : false}
+            >
+                <Header as={display === "view" ? 'h3' : 'h1'}>{routine.name}</Header>
                 {/* <DeleteDayRoutineButton dayRoutine = {dayRoutine}/> */}
                 <TaskList
                     routineId={routineId} 

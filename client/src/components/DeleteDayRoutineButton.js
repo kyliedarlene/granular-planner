@@ -1,9 +1,14 @@
+import { Button } from 'semantic-ui-react'
+
 function DeleteDayRoutineButton({ dayRoutine, handleDeleteDayRoutine }) {
 
     return (
-        <button onClick={() => handleDeleteDayRoutine(dayRoutine)}>
-            {`Remove ${dayRoutine['routine']['name']}`}
-        </button>
+        <Button 
+            color='red'
+            content={`Remove ${dayRoutine['routine']['name']}`}
+            onClick={() => handleDeleteDayRoutine(dayRoutine)}
+        >
+        </Button>
     )
 }
 

@@ -1,18 +1,7 @@
 import { useState, useEffect } from "react";
 import Task from "./Task";
 import AddTask from "./AddTask";
-import {
-    ItemMeta,
-    ItemImage,
-    ItemHeader,
-    ItemGroup,
-    ItemExtra,
-    ItemDescription,
-    ItemContent,
-    Image,
-    Item,
-    SegmentGroup
-  } from 'semantic-ui-react'
+import { SegmentGroup } from 'semantic-ui-react'
 
 function TaskList({ 
     routineId, 

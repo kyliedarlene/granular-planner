@@ -7,16 +7,13 @@ import NavBar from "../components/NavBar.js";
 import DeleteDayButton from "../components/DeleteDayButton.js"
 
 import {
-    Container,
-    CardMeta,
-    CardHeader,
-    CardDescription,
-    CardContent,
     Card,
-    Icon,
-    Image,
-    Segment
+    Segment,
+    Divider,
+    Container,
+    Header
   } from 'semantic-ui-react'
+import EditDay from "../components/EditDay.js";
 
 function DisplayDay() {
     const [day, setDay] = useState({})
@@ -81,29 +78,30 @@ function DisplayDay() {
     }
 
     return (
-        <Segment id={"display-day"}>
-            <NavBar/>
-            <h1>{day.name}</h1>
+        <Container>
+        <NavBar/>
+            <Segment id={"display-day"} align="center" padded='very'>
+                <Header as='h1'>{day.name}</Header>
                 {dayRoutines.map((dayRoutine) => (
-                    <Card id={"routine-container"} key={dayRoutine.id * 1000}>
-                        <Routine
-                            key={dayRoutine.id}
-                            display={"view"} 
-                            routineId={dayRoutine.routine_id} 
-                        />
-                        <DeleteDayRoutineButton 
-                            key={(dayRoutine.id) * 100} 
-                            dayRoutine={dayRoutine}
-                            handleDeleteDayRoutine={handleDeleteDayRoutine} 
-                        />
-                    </Card>
+                    <>
+                        <Card id={"routine-container"} key={dayRoutine.id * 1000}>
+                            <Routine
+                                key={dayRoutine.id}
+                                display={"view"} 
+                                routineId={dayRoutine.routine_id} 
+                            />
+                            <DeleteDayRoutineButton 
+                                key={(dayRoutine.id) * 100} 
+                                dayRoutine={dayRoutine}
+                                handleDeleteDayRoutine={handleDeleteDayRoutine} 
+                            />
+                        </Card>
+                        <Divider fitted compact/>
+                    </>
                 ))}
-            <DeleteDayButton day={day} />
-            <AddRoutine 
-                dayId={dayId} 
-                handleAddDayRoutine={handleAddDayRoutine}
-            />
-        </Segment>
+                <EditDay day={day} handleAddDayRoutine={handleAddDayRoutine} />
+            </Segment>
+        </Container >
     )
 }
 
