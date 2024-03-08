@@ -84,7 +84,6 @@ function DisplayDay() {
         <div id={"display-day"}>
             <NavBar/>
             <h1>{day.name}</h1>
-            <DeleteDayButton day={day} />
                 {dayRoutines.map((dayRoutine) => (
                     <Card id={"routine-container"} key={dayRoutine.id * 1000}>
                         <Routine
@@ -99,6 +98,7 @@ function DisplayDay() {
                         />
                     </Card>
                 ))}
+            <DeleteDayButton day={day} />
             <AddRoutine 
                 dayId={dayId} 
                 handleAddDayRoutine={handleAddDayRoutine}

@@ -43,7 +43,6 @@ function Task({ routineTask, handleDeleteRoutineTask, display }) {
     return (
         <Segment secondary clearing textAlign='center'>
             <p>{task.name}</p>
-            
             {display === "view" ? 
                 null :
                 <>

@@ -39,7 +39,7 @@ function TaskList({
     } 
 
     return (
-        <SegmentGroup compact>
+        <SegmentGroup compact={display === "view" ? false : true}>
             {
                 orderedRoutineTasks.map((routineTask) => (
                     <Task 

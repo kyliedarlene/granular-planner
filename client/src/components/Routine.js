@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import TaskList from "./TaskList";
 import DeleteRoutineButton from "./DeleteRoutineButton";
+import { Header } from 'semantic-ui-react'
 
 import {
     Container,
@@ -61,7 +62,7 @@ function Routine({ routineId, display }) {
     
     return (
             <Segment padded textAlign="center">
-                <h2>{routine.name}</h2>
+                <Header as={display === "view" ? 'h2' : 'h1'}>{routine.name}</Header>
                 
                 {/* <DeleteDayRoutineButton dayRoutine = {dayRoutine}/> */}
                 <TaskList
@@ -71,7 +72,10 @@ function Routine({ routineId, display }) {
                     handleDeleteRoutineTask={handleDeleteRoutineTask} 
                     display={display}
                 />
-                <DeleteRoutineButton routineId = {routineId}/>
+                {display === "view" ?
+                    null :
+                    <DeleteRoutineButton routineId = {routineId}/>
+                }
             </Segment>
     )
 }
