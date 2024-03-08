@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function AddDay(props) {
 
     const [formData, setFormData] = useState([]);
+    const navigate = useNavigate();
 
     function postDay() {
         fetch(`/days`, {
@@ -14,6 +16,8 @@ function AddDay(props) {
                 name: formData[0]
             })
         })
+            .then(r => r.json())
+            .then(newDay => navigate(`/day/${newDay.id}`))
     }
 
     function handleSubmit(e) {
