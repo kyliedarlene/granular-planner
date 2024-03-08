@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 import TaskList from "./TaskList";
+import DeleteRoutineButton from "./DeleteRoutineButton";
+import { Header } from 'semantic-ui-react'
+
 import {
     Container,
     CardMeta,
@@ -12,7 +15,7 @@ import {
     Segment
   } from 'semantic-ui-react'
 
-function Routine({ display, routineId }) {
+function Routine({ routineId, display }) {
     const [routine, setRoutine] = useState([])
     const [routineTasks, setRoutineTasks] = useState([])
 
@@ -58,18 +61,25 @@ function Routine({ display, routineId }) {
     }
     
     return (
-        <Segment padded >
-            <h2>{routine.name}</h2>
-            
-            {/* <DeleteDayRoutineButton dayRoutine = {dayRoutine}/> */}
-            <TaskList
-                routineId={routineId} 
-                routineTasks={routineTasks} 
-                handleAddRoutineTask={handleAddRoutineTask}
-                handleDeleteRoutineTask={handleDeleteRoutineTask} 
-                display={display}
-            />
-        </Segment>
+            <Segment 
+                padded 
+                textAlign="center"
+                basic={display === "view" ? true : false}
+            >
+                <Header as={display === "view" ? 'h3' : 'h1'}>{routine.name}</Header>
+                {/* <DeleteDayRoutineButton dayRoutine = {dayRoutine}/> */}
+                <TaskList
+                    routineId={routineId} 
+                    routineTasks={routineTasks} 
+                    handleAddRoutineTask={handleAddRoutineTask}
+                    handleDeleteRoutineTask={handleDeleteRoutineTask} 
+                    display={display}
+                />
+                {display === "view" ?
+                    null :
+                    <DeleteRoutineButton routineId = {routineId}/>
+                }
+            </Segment>
     )
 }
 

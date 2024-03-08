@@ -1,20 +1,7 @@
 import { useState, useEffect } from "react";
 import DeleteTaskButton from "./DeleteTaskButton";
 import UpdateTaskForm from "./UpdateTaskForm";
-import {
-    ItemMeta,
-    ItemImage,
-    ItemHeader,
-    ItemGroup,
-    ItemExtra,
-    ItemDescription,
-    ItemContent,
-    Image,
-    Item,
-    Segment,
-    Button,
-    Container
-  } from 'semantic-ui-react'
+import { Segment, Divider } from 'semantic-ui-react'
 
 function Task({ routineTask, handleDeleteRoutineTask, display }) {
     const [task, setTask] = useState([])
@@ -40,18 +27,21 @@ function Task({ routineTask, handleDeleteRoutineTask, display }) {
     }, [])
 
     return (
-        <Segment>
+        <Segment secondary clearing textAlign='center'>
             <p>{task.name}</p>
-            {/* <UpdateTaskForm 
-                taskId={task.id} 
-                handleUpdateTask={handleUpdateTask} 
-            /> */}
             {display === "view" ? 
                 null :
-                <DeleteTaskButton
-                    routineTask={routineTask} 
-                    handleDeleteRoutineTask={handleDeleteRoutineTask} 
-                /> 
+                <>
+                    <UpdateTaskForm 
+                        taskId={task.id} 
+                        handleUpdateTask={handleUpdateTask} 
+                    />
+                    <Divider horizontal>Or</Divider>
+                    <DeleteTaskButton
+                        routineTask={routineTask} 
+                        handleDeleteRoutineTask={handleDeleteRoutineTask} 
+                    /> 
+                </>
             }
         </Segment>
     )

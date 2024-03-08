@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import DeleteRoutineButton from "../components/DeleteRoutineButton";
 import Routine from "../components/Routine";
-
+import { Segment } from 'semantic-ui-react'
 
 function UpdateRoutine() {
     const params = useParams();
@@ -11,8 +11,9 @@ function UpdateRoutine() {
     return (
         <div>
             <NavBar/>
-            <DeleteRoutineButton routineId = {routineId}/>
-            <Routine routineId={routineId}/>
+            <Segment padded='very'>
+                <Routine routineId={routineId}/>
+            </Segment>
         </div>
     )
 }
