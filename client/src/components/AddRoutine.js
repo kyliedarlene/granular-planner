@@ -35,7 +35,7 @@ function AddRoutine({ dayId, handleAddDayRoutine }) {
                     </option>
                 ))}
             </select>
-            <Button type="submit" color='green'>Add Routine</Button>
+            <Button type="submit" color='green' compact>Add Routine</Button>
         </form>
     );
 }
