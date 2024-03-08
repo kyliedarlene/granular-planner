@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import TaskList from "./TaskList";
-import AddTask from "./AddTask";
+import DeleteRoutineButton from "./DeleteRoutineButton";
+
 import {
     Container,
     CardMeta,
@@ -13,7 +14,7 @@ import {
     Segment
   } from 'semantic-ui-react'
 
-function Routine({ display, routineId }) {
+function Routine({ routineId, display }) {
     const [routine, setRoutine] = useState([])
     const [routineTasks, setRoutineTasks] = useState([])
 
@@ -59,8 +60,7 @@ function Routine({ display, routineId }) {
     }
     
     return (
-        <Container textAlign="center" >
-            <Segment padded>
+            <Segment padded textAlign="center">
                 <h2>{routine.name}</h2>
                 
                 {/* <DeleteDayRoutineButton dayRoutine = {dayRoutine}/> */}
@@ -71,8 +71,8 @@ function Routine({ display, routineId }) {
                     handleDeleteRoutineTask={handleDeleteRoutineTask} 
                     display={display}
                 />
+                <DeleteRoutineButton routineId = {routineId}/>
             </Segment>
-        </Container>
     )
 }
 
