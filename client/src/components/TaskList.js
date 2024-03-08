@@ -39,7 +39,7 @@ function TaskList({
     } 
 
     return (
-        <SegmentGroup>
+        <SegmentGroup compact>
             {
                 orderedRoutineTasks.map((routineTask) => (
                     <Task 
@@ -50,7 +50,13 @@ function TaskList({
                     />
                 ))
             }
-            {/* <AddTask routineId={routineId} handleAddRoutineTask={handleAddRoutineTask} /> */}
+            {display === "view" ?
+                null :
+                <AddTask 
+                    routineId={routineId} 
+                    handleAddRoutineTask={handleAddRoutineTask} 
+                />
+            }
         </SegmentGroup>
     )
 }

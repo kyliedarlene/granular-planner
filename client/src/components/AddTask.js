@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Input, Segment } from 'semantic-ui-react'
 
 function AddTask({ routineId, handleAddRoutineTask }) {
     const [formData, setFormData] = useState([]);
@@ -31,14 +32,18 @@ function AddTask({ routineId, handleAddRoutineTask }) {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input
-            type="text"
-            placeholder = "name new task"
-            value = {formData}
-            onChange = {handleChange}/>
-            <button type="submit">Submit</button>
-        </form>
+        <Segment compact tertiary>
+            <form onSubmit={handleSubmit}>
+                <Input
+                    type="text"
+                    placeholder = "New Task"
+                    value = {formData}
+                    onChange = {handleChange}
+                    action={{ color: 'green', content: 'Add New Task' }}
+                />
+                {/* <button type="submit">Submit</button> */}
+            </form>
+        </Segment>
     )
     //form takes in a name and make a new routine
     //return takes us to /update-routine/:id

@@ -1,4 +1,4 @@
-import { Button, Divider, Input, Segment } from 'semantic-ui-react'
+import { Button } from 'semantic-ui-react'
 
 function DeleteTaskButton({ routineTask, handleDeleteRoutineTask }) {
     return (
@@ -6,7 +6,7 @@ function DeleteTaskButton({ routineTask, handleDeleteRoutineTask }) {
             onClick={() => handleDeleteRoutineTask(routineTask)}
             size = 'small'
             color='red'
-            content='Delete Task'
+            content='Remove Task'
             icon = 'delete'
             labelPosition = 'left'
         >

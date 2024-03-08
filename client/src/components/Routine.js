@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import TaskList from "./TaskList";
+import AddTask from "./AddTask";
 import {
     Container,
     CardMeta,
@@ -58,18 +59,20 @@ function Routine({ display, routineId }) {
     }
     
     return (
-        <Segment padded='very' >
-            <h2>{routine.name}</h2>
-            
-            {/* <DeleteDayRoutineButton dayRoutine = {dayRoutine}/> */}
-            <TaskList
-                routineId={routineId} 
-                routineTasks={routineTasks} 
-                handleAddRoutineTask={handleAddRoutineTask}
-                handleDeleteRoutineTask={handleDeleteRoutineTask} 
-                display={display}
-            />
-        </Segment>
+        <Container textAlign="center" >
+            <Segment padded>
+                <h2>{routine.name}</h2>
+                
+                {/* <DeleteDayRoutineButton dayRoutine = {dayRoutine}/> */}
+                <TaskList
+                    routineId={routineId} 
+                    routineTasks={routineTasks} 
+                    handleAddRoutineTask={handleAddRoutineTask}
+                    handleDeleteRoutineTask={handleDeleteRoutineTask} 
+                    display={display}
+                />
+            </Segment>
+        </Container>
     )
 }
 
