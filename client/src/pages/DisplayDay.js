@@ -1,10 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import AddRoutine from "../components/AddRoutine.js";
 import Routine from "../components/Routine";
 import DeleteDayRoutineButton from "../components/DeleteDayRoutineButton.js";
 import NavBar from "../components/NavBar.js";
-import DeleteDayButton from "../components/DeleteDayButton.js"
 
 import {
     Card,
