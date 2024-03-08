@@ -1,22 +1,17 @@
 import AddRoutine from './AddRoutine';
 import DeleteDayButton from './DeleteDayButton';
 
-import {
-    Card,
-    Segment,
-    Divider,
-    Container,
-    Header
-  } from 'semantic-ui-react'
+import { Segment, Header, Divider } from 'semantic-ui-react'
 
 function EditDay({ day, handleAddDayRoutine}) {
     return (
         <Segment id='edit-day' secondary>
-            <Header as='h3'>Edit Day Template</Header>
+            <Header as='h3'>Edit Template</Header>
             <AddRoutine 
                 dayId={day.id} 
                 handleAddDayRoutine={handleAddDayRoutine}
             />
+            <Divider horizontal>Or</Divider>
             <DeleteDayButton day={day} />
         </Segment>
     )

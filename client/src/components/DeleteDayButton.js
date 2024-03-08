@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { Button } from 'semantic-ui-react'
 
 function DeleteDayButton({day}) {
 
@@ -19,7 +20,15 @@ function DeleteDayButton({day}) {
         //nav to days
     }
 
-    return <button onClick={() => handleDeleteDay(day)}>[delete {day.name}]</button>
+    return (
+        <Button 
+            basic
+            color="red"
+            onClick={() => handleDeleteDay(day)}
+        >
+                Delete {day.name} Template
+        </Button>
+    )
 }
 
 export default DeleteDayButton;

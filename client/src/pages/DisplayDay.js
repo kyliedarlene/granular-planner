@@ -96,7 +96,7 @@ function DisplayDay() {
                                 handleDeleteDayRoutine={handleDeleteDayRoutine} 
                             />
                         </Card>
-                        <Divider fitted compact/>
+                        <Divider fitted/>
                     </>
                 ))}
                 <EditDay day={day} handleAddDayRoutine={handleAddDayRoutine} />

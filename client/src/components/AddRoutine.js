@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Button } from 'semantic-ui-react'
 
 function AddRoutine({ dayId, handleAddDayRoutine }) {
 
@@ -34,7 +35,7 @@ function AddRoutine({ dayId, handleAddDayRoutine }) {
                     </option>
                 ))}
             </select>
-            <button type="submit">Submit</button>
+            <Button type="submit" color='green'>Add Routine</Button>
         </form>
     );
 }
