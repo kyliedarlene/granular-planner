@@ -16,7 +16,7 @@ import {
     Container
   } from 'semantic-ui-react'
 
-function Task({ routineTask, handleDeleteRoutineTask }) {
+function Task({ routineTask, handleDeleteRoutineTask, display }) {
     const [task, setTask] = useState([])
     
     function handleUpdateTask(id, newTaskName) {
@@ -46,10 +46,13 @@ function Task({ routineTask, handleDeleteRoutineTask }) {
                 taskId={task.id} 
                 handleUpdateTask={handleUpdateTask} 
             /> */}
-            <DeleteTaskButton
-                routineTask={routineTask} 
-                handleDeleteRoutineTask={handleDeleteRoutineTask} 
-            /> 
+            {display === "view" ? 
+                null :
+                <DeleteTaskButton
+                    routineTask={routineTask} 
+                    handleDeleteRoutineTask={handleDeleteRoutineTask} 
+                /> 
+            }
         </Segment>
     )
 }

@@ -12,7 +12,7 @@ import {
     Segment
   } from 'semantic-ui-react'
 
-function Routine({ routineId }) {
+function Routine({ display, routineId }) {
     const [routine, setRoutine] = useState([])
     const [routineTasks, setRoutineTasks] = useState([])
 
@@ -62,11 +62,12 @@ function Routine({ routineId }) {
             <h2>{routine.name}</h2>
             
             {/* <DeleteDayRoutineButton dayRoutine = {dayRoutine}/> */}
-            <TaskList 
+            <TaskList
                 routineId={routineId} 
                 routineTasks={routineTasks} 
                 handleAddRoutineTask={handleAddRoutineTask}
                 handleDeleteRoutineTask={handleDeleteRoutineTask} 
+                display={display}
             />
         </Segment>
     )

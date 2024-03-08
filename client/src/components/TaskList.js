@@ -18,7 +18,8 @@ function TaskList({
     routineId, 
     routineTasks, 
     handleAddRoutineTask, 
-    handleDeleteRoutineTask 
+    handleDeleteRoutineTask,
+    display
 }) {
     const orderedRoutineTasks = []
     if (routineTasks.length > 0) {
@@ -44,7 +45,8 @@ function TaskList({
                     <Task 
                         key={routineTask.id} 
                         routineTask={routineTask} 
-                        handleDeleteRoutineTask={handleDeleteRoutineTask } 
+                        handleDeleteRoutineTask={handleDeleteRoutineTask} 
+                        display={display}
                     />
                 ))
             }

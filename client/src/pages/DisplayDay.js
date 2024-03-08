@@ -6,6 +6,18 @@ import DeleteDayRoutineButton from "../components/DeleteDayRoutineButton.js";
 import NavBar from "../components/NavBar.js";
 import DeleteDayButton from "../components/DeleteDayButton.js"
 
+import {
+    Container,
+    CardMeta,
+    CardHeader,
+    CardDescription,
+    CardContent,
+    Card,
+    Icon,
+    Image,
+    Segment
+  } from 'semantic-ui-react'
+
 function DisplayDay() {
     const [day, setDay] = useState({})
     const [dayRoutines, setDayRoutines] = useState([])
@@ -73,19 +85,20 @@ function DisplayDay() {
             <NavBar/>
             <h1>{day.name}</h1>
             <DeleteDayButton day={day} />
-            {dayRoutines.map((dayRoutine) => (
-                <div id={"routine-container"} key={dayRoutine.id * 1000}>
-                    <Routine 
-                        key={dayRoutine.id} 
-                        routineId={dayRoutine.routine_id} 
-                    />
-                    <DeleteDayRoutineButton 
-                        key={(dayRoutine.id) * 100} 
-                        dayRoutine={dayRoutine}
-                        handleDeleteDayRoutine={handleDeleteDayRoutine} 
-                    />
-                </div>
-            ))}
+                {dayRoutines.map((dayRoutine) => (
+                    <Card id={"routine-container"} key={dayRoutine.id * 1000}>
+                        <Routine
+                            key={dayRoutine.id}
+                            display={"view"} 
+                            routineId={dayRoutine.routine_id} 
+                        />
+                        <DeleteDayRoutineButton 
+                            key={(dayRoutine.id) * 100} 
+                            dayRoutine={dayRoutine}
+                            handleDeleteDayRoutine={handleDeleteDayRoutine} 
+                        />
+                    </Card>
+                ))}
             <AddRoutine 
                 dayId={dayId} 
                 handleAddDayRoutine={handleAddDayRoutine}
