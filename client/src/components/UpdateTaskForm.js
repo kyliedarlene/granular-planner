@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Input, Button } from 'semantic-ui-react'
+import { Input } from 'semantic-ui-react'
 
 function UpdateTaskForm({ taskId, handleUpdateTask }) {
     const [formData, setFormData] = useState([])

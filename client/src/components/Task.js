@@ -1,21 +1,7 @@
 import { useState, useEffect } from "react";
 import DeleteTaskButton from "./DeleteTaskButton";
 import UpdateTaskForm from "./UpdateTaskForm";
-import {
-    ItemMeta,
-    ItemImage,
-    ItemHeader,
-    ItemGroup,
-    ItemExtra,
-    ItemDescription,
-    ItemContent,
-    Image,
-    Item,
-    Segment,
-    Button,
-    Container,
-    Divider
-  } from 'semantic-ui-react'
+import { Segment, Divider } from 'semantic-ui-react'
 
 function Task({ routineTask, handleDeleteRoutineTask, display }) {
     const [task, setTask] = useState([])

@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Input } from 'semantic-ui-react'
 
 function NewRoutineForm({dayId}) {
 
     const [formData, setFormData] = useState([]);
+    const navigate = useNavigate();
 
     function postRoutine() {
         fetch(`/routines`, {
@@ -14,6 +17,8 @@ function NewRoutineForm({dayId}) {
                 name: formData[0]
             })
         })
+            .then(r => r.json())
+            .then((newRoutine) => navigate(`/update-routine/${newRoutine.id}`))
 
         if (dayId != 'none') {
             fetch(`/day_routines`, {
@@ -41,12 +46,14 @@ function NewRoutineForm({dayId}) {
 
     return (
         <form onSubmit={handleSubmit}>
-            <input
-            type="text"
-            placeholder = "name your new Routine"
-            value = {formData}
-            onChange = {handleChange}/>
-            <button type="submit">Submit</button>
+            <Input
+                type="text"
+                placeholder = "New Routine Name"
+                value = {formData}
+                onChange = {handleChange}
+                action={{ color: 'green', content: 'Create Routine' }}
+            />
+            {/* <button type="submit">Submit</button> */}
         </form>
     )
     //form takes in a name and make a new routine

@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import NewRoutineForm from "../components/NewRoutineForm";
-import { Button, ButtonGroup } from 'semantic-ui-react'
+import { Button, Segment } from 'semantic-ui-react'
 
 function RoutineMenu() {
     const [routines, setRoutines] = useState([])
@@ -14,12 +13,13 @@ function RoutineMenu() {
 
     return (
         <div id="routine-menu">
+            <Segment padded>
                 {routines.map((routine) => (
-                    <Button key={routine.id}>
+                    <Segment key={routine.id} fluid>
                         <Link to={`/update-routine/${routine.id}`}>{routine.name}</Link>
-                    </Button>
+                    </Segment>
                 ))}
-            <NewRoutineForm dayId= {'none'}/>
+            </Segment>
         </div>
     )
 }

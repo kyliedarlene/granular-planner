@@ -12,7 +12,7 @@ function NavBar(){
                 <Link to={`/`}>Home</Link>
             </button>
             <button>
-                <Link to={`/days`}>Days</Link>
+                <Link to={`/days`}>Day Templates</Link>
             </button>
             <button>
                 <Link to={`/manage-routines`}>Routines</Link>

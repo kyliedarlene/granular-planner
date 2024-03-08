@@ -1,12 +1,21 @@
 import RoutineMenu from "../components/RoutineMenu";
 import NavBar from "../components/NavBar";
+import NewRoutineForm from "../components/NewRoutineForm";
+
+
+import { Segment, Header, Divider } from 'semantic-ui-react'
 
 function ManageRoutines() {
     return (
         <>
             <NavBar/>
-            <h1>Which routine would you like to manage?</h1>
-            <RoutineMenu />
+            <Segment padded='very' align='center'>
+                <Header as='h3'>Choose a routine to manage:</Header>
+                <RoutineMenu />
+                <Divider horizontal>Or</Divider>
+                <Header as='h3'>Create a new routine:</Header>
+                <NewRoutineForm dayId= {'none'}/>
+            </Segment>
         </>
     )
 }
