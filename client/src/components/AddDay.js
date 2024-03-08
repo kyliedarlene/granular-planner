@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function AddDay(props) {
+function AddDay() {
 
     const [formData, setFormData] = useState([]);
     const navigate = useNavigate();
@@ -24,7 +24,7 @@ function AddDay(props) {
         e.preventDefault();
         postDay();
         setFormData("")
-        props.onAddDay()
+        // props.onAddDay()
     }
 
     function handleChange(e) {
