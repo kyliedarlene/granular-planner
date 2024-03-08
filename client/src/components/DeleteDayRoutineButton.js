@@ -1,9 +1,8 @@
 function DeleteDayRoutineButton({ dayRoutine, handleDeleteDayRoutine }) {
-    // console.log(dayRoutine)
 
     return (
         <button onClick={() => handleDeleteDayRoutine(dayRoutine)}>
-            {`Remove`}
+            {`Remove ${dayRoutine['routine']['name']}`}
         </button>
     )
 }

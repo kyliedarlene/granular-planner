@@ -81,7 +81,7 @@ function DisplayDay() {
     }
 
     return (
-        <div id={"display-day"}>
+        <Segment id={"display-day"}>
             <NavBar/>
             <h1>{day.name}</h1>
                 {dayRoutines.map((dayRoutine) => (
@@ -103,7 +103,7 @@ function DisplayDay() {
                 dayId={dayId} 
                 handleAddDayRoutine={handleAddDayRoutine}
             />
-        </div>
+        </Segment>
     )
 }
 
