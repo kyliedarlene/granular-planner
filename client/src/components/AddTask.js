@@ -21,6 +21,7 @@ function AddTask({ routineId, handleAddRoutineTask }) {
         e.preventDefault();
         console.log(routineId)
         postTask();
+        setFormData([])
     }
 
     function handleChange(e) {

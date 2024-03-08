@@ -1,5 +1,16 @@
 import { useState, useEffect } from "react";
 import TaskList from "./TaskList";
+import {
+    Container,
+    CardMeta,
+    CardHeader,
+    CardDescription,
+    CardContent,
+    Card,
+    Icon,
+    Image,
+    Segment
+  } from 'semantic-ui-react'
 
 function Routine({ routineId }) {
     const [routine, setRoutine] = useState([])
@@ -47,7 +58,7 @@ function Routine({ routineId }) {
     }
     
     return (
-        <div>
+        <Segment padded >
             <h2>{routine.name}</h2>
             
             {/* <DeleteDayRoutineButton dayRoutine = {dayRoutine}/> */}
@@ -57,7 +68,7 @@ function Routine({ routineId }) {
                 handleAddRoutineTask={handleAddRoutineTask}
                 handleDeleteRoutineTask={handleDeleteRoutineTask} 
             />
-        </div>
+        </Segment>
     )
 }
 

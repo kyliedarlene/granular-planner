@@ -1,6 +1,18 @@
 import { useState, useEffect } from "react";
 import Task from "./Task";
 import AddTask from "./AddTask";
+import {
+    ItemMeta,
+    ItemImage,
+    ItemHeader,
+    ItemGroup,
+    ItemExtra,
+    ItemDescription,
+    ItemContent,
+    Image,
+    Item,
+    SegmentGroup
+  } from 'semantic-ui-react'
 
 function TaskList({ 
     routineId, 
@@ -26,7 +38,7 @@ function TaskList({
     } 
 
     return (
-        <div id="task-list">
+        <SegmentGroup>
             {
                 orderedRoutineTasks.map((routineTask) => (
                     <Task 
@@ -36,8 +48,8 @@ function TaskList({
                     />
                 ))
             }
-            <AddTask routineId={routineId} handleAddRoutineTask={handleAddRoutineTask} />
-        </div>
+            {/* <AddTask routineId={routineId} handleAddRoutineTask={handleAddRoutineTask} /> */}
+        </SegmentGroup>
     )
 }
 
