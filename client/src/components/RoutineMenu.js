@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Button, Segment } from 'semantic-ui-react'
+import { Segment } from 'semantic-ui-react'
 
 function RoutineMenu() {
     const [routines, setRoutines] = useState([])
