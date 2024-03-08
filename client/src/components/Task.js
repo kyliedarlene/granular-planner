@@ -13,7 +13,8 @@ import {
     Item,
     Segment,
     Button,
-    Container
+    Container,
+    Divider
   } from 'semantic-ui-react'
 
 function Task({ routineTask, handleDeleteRoutineTask, display }) {
@@ -40,18 +41,22 @@ function Task({ routineTask, handleDeleteRoutineTask, display }) {
     }, [])
 
     return (
-        <Segment>
+        <Segment raised basic textAlign='center'>
             <p>{task.name}</p>
-            {/* <UpdateTaskForm 
-                taskId={task.id} 
-                handleUpdateTask={handleUpdateTask} 
-            /> */}
+            
             {display === "view" ? 
                 null :
-                <DeleteTaskButton
-                    routineTask={routineTask} 
-                    handleDeleteRoutineTask={handleDeleteRoutineTask} 
-                /> 
+                <>
+                    <UpdateTaskForm 
+                        taskId={task.id} 
+                        handleUpdateTask={handleUpdateTask} 
+                    />
+                    <Divider horizontal>Or</Divider>
+                    <DeleteTaskButton
+                        routineTask={routineTask} 
+                        handleDeleteRoutineTask={handleDeleteRoutineTask} 
+                    /> 
+                </>
             }
         </Segment>
     )

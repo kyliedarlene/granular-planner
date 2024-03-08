@@ -58,7 +58,7 @@ function Routine({ display, routineId }) {
     }
     
     return (
-        <Segment padded >
+        <Segment padded='very' >
             <h2>{routine.name}</h2>
             
             {/* <DeleteDayRoutineButton dayRoutine = {dayRoutine}/> */}

@@ -5,7 +5,7 @@ function ManageRoutines() {
     return (
         <>
             <NavBar/>
-            <h1>Select a routine to update:</h1>
+            <h1>Which routine would you like to manage?</h1>
             <RoutineMenu />
         </>
     )

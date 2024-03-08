@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import NewRoutineForm from "../components/NewRoutineForm";
+import { Button, ButtonGroup } from 'semantic-ui-react'
 
 function RoutineMenu() {
     const [routines, setRoutines] = useState([])
@@ -13,11 +14,11 @@ function RoutineMenu() {
 
     return (
         <div id="routine-menu">
-            {routines.map((routine) => (
-                <button key={routine.id}>
-                    <Link to={`/update-routine/${routine.id}`}>{routine.name}</Link>
-                </button>
-            ))}
+                {routines.map((routine) => (
+                    <Button key={routine.id}>
+                        <Link to={`/update-routine/${routine.id}`}>{routine.name}</Link>
+                    </Button>
+                ))}
             <NewRoutineForm dayId= {'none'}/>
         </div>
     )

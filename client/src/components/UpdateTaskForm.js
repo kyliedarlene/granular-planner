@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Input, Button } from 'semantic-ui-react'
 
 function UpdateTaskForm({ taskId, handleUpdateTask }) {
     const [formData, setFormData] = useState([])
@@ -6,17 +7,20 @@ function UpdateTaskForm({ taskId, handleUpdateTask }) {
     function handleSubmit(event) {
         event.preventDefault()
         handleUpdateTask(taskId, formData[0])
+        setFormData([])
     }
     
     return (
         <form onSubmit={handleSubmit}>
-            <input
+            <Input
                 type="text"
-                placeholder = "Rename task"
+                placeholder = "New Task Name"
                 value = {formData}
                 onChange = {(event) => setFormData([event.target.value])}
+                action={{ color: 'blue', content: 'Rename Task' }}
+                size='small'
             />
-            <button type="submit">Submit</button>
+            {/* <Button type="submit">Submit</Button> */}
         </form>
     )
 }
